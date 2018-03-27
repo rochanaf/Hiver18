@@ -12,11 +12,12 @@ matrix_equals_asm:
 loop1:
         cmp %ecx, %esi /* r-matorder*/
         jae end
+        jmp loop2
 
 loop2:
         cmp %ecx, %edi /* c-matorder*/
         jae retourloop1
-
+        jmp condition
 
 condition:
         mov 8(%ebp), %ebx /* ebx= *inmatdata1 */
@@ -35,16 +36,11 @@ condition:
 
 else:
         mov $1, %eax
-        inc  %edi
+        add $1, %edi
         jmp loop2
 
 retourloop1:
-            inc  %esi
-        inc %edi
-        jmp loop2
-
-retourloop1:
-            inc %esi
+            add $1, %esi
             mov $0, %edi
             jmp loop1
 
