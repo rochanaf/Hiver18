@@ -29,9 +29,7 @@ loop2:
 
 
         mov %esi, %ebx
-        push %edx
         imul %ecx, %ebx
-        pop %edx
         add %edi, %ebx /* edi= c+r*matorder */
         lea (%eax,%ebx), %eax /*eax = &outmatdata[c+r*matorder] */
         mov %edx, (%eax) /*outmatdata[c+r*matorder]= edx*/
