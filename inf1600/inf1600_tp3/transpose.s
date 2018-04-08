@@ -25,11 +25,11 @@ loop2:
         imul %ecx, %ebx
         add %esi, %ebx /* edi= r+c*matorder */
         mov (%edx,%ebx), %edx /*edx = inmatdata[r+c*matorder] */
-	mov %esi, %ebx
+	    mov %esi, %ebx
         imul %ecx, %ebx
         add %edi, %ebx /* edi= c+r*matorder */
-        lea (%eax,%ebx), %eax /*eax = outmatdata[c+r*matorder] */
-        mov %edx,(%eax)
+        mov %edx, (%eax,%ebx) /*eax = outmatdata[c+r*matorder] */
+
 
 
         inc %edi

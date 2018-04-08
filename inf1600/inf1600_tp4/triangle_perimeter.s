@@ -5,6 +5,6 @@ _ZNK9CTriangle12PerimeterAsmEv:
         mov %esp, %ebp /* set ebp to current esp */
         
         /* Write your solution here */
-        
+
         leave          /* restore ebp and esp */
         ret            /* return to the caller */
