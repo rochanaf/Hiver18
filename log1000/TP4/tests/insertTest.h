@@ -25,6 +25,7 @@ class insertTest : public CppUnit::TestFixture
     CPPUNIT_TEST_SUITE(insertTest);
     CPPUNIT_TEST(test1);
     CPPUNIT_TEST(test2);
+    CPPUNIT_TEST(test3);
     CPPUNIT_TEST_SUITE_END();
     
 public:
@@ -34,6 +35,7 @@ public:
 protected:
     void test1(void);
     void test2(void);
+    void test3(void);
     
 private:
     
@@ -44,12 +46,24 @@ private:
 
 void insertTest::test1(void)
 {
-    CPPUNIT_ASSERT(true);
+    vec=new Vector(3,"123");
+    vec->insert(3,"7");
+    vec->insert(4,"123");
+    CPPUNIT_ASSERT_ASSERTION_FAIL(CPPUNIT_ASSERT(vec->get(4)=="7"));
 }
 
 void insertTest::test2(void)
 {
-    CPPUNIT_ASSERT(true);
+    vec= new Vector(5,"123");
+    vec->insert(5,"3");
+    CPPUNIT_ASSERT(vec->get(1)=="123");
+}
+
+void insertTest::test3(void)
+{
+    vec= new Vector(5,"123");
+    vec->insert(5,"3");
+    CPPUNIT_ASSERT(vec->get(5)=="3");
 }
 
 void insertTest::setUp(void)

@@ -46,16 +46,19 @@ private:
 
 void getTest::test1(void)
 {
-    CPPUNIT_ASSERT((0)==(1));
+    vec=new Vector(3,"123");
+    CPPUNIT_ASSERT((vec->get(0))=="123");
 }
 
 void getTest::test2(void)
 {
-    CPPUNIT_ASSERT((1)==(2));
+    vec =new Vector(3,"456");
+    CPPUNIT_ASSERT((vec->get(2))=="456");
 }
 void getTest::test3(void)
 {
-    CPPUNIT_ASSERT((2)==(3));
+    vec= new Vector(100,"456");
+    CPPUNIT_ASSERT_ASSERTION_FAIL(CPPUNIT_ASSERT((vec->get(5))=="123"));
 }
 
 void getTest::setUp(void)
