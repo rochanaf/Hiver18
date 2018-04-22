@@ -5,14 +5,15 @@
 #include <stdlib.h>
 
 // Constructeur
-Joueur::Joueur (string nom,string prenom,int age,string teamName,string teamPays) {
+Joueur::Joueur (string nom,string prenom,int age,Equipe e) {
     // Joueur information
     this->nom = nom;
     this->prenom = prenom;
     this->age = age;
     // Equipe information
-    this->teamName = teamName;
-    this->teamPays = teamPays;
+  //  this->teamName = teamName;
+    //this->teamPays = teamPays;
+    this->e = e;
 }
 
 // Setters
@@ -43,13 +44,17 @@ int Joueur::getAge() {
     return this->age;
 }
 
-string Joueur::getNomEquipe() {
+Equipe Joueur:: getEquipe()
+{
+    return this->e;
+}
+/*string Joueur::getNomEquipe() {
     return this->teamName;
 }
 
 string Joueur::getPaysEquipe() {
     return this->teamPays;
-}
+}*/
 
 // Enregistrer l'Joueur dans un fichier
 void Joueur::saveJoueur (string fileName) {
@@ -58,8 +63,8 @@ void Joueur::saveJoueur (string fileName) {
     outfile<<this->nom <<","
 		   <<this->prenom <<","
 		   <<this->age <<","
-		   <<this->teamName << ","
-		   <<this->teamPays <<"\n";
+		  // <<this->teamName << ","
+		   <<this->e <<"\n";
     outfile.close();
 }
 
@@ -126,7 +131,7 @@ Joueur* Joueur::trouverJoueur (string DB, string nom,string prenom) {
 				}
 			}
 			// Créer un objet de type Joueur avec les informations récupérées
-			Joueur *a = new Joueur(nomJoueurDB, prenomJoueurDB,atoi(ageJoueurDB.c_str()), teamNameDB, teamPaysDB);
+			Joueur *a = new Joueur(nomJoueurDB, prenomJoueurDB,atoi(ageJoueurDB.c_str()), Equipe(teamNameDB, teamPaysDB));
 			// Fermer la base de données
 			fichier.close();
 			// Retourner l'Joueur sélectionné
@@ -144,8 +149,8 @@ void Joueur::afficher() {
     std::cout << "Nom : " << this->nom << std::endl;
     std::cout << "Prenom : " << this->prenom << std::endl;
     std::cout << "Age : " << this->age << std::endl;
-    std::cout << "Nom equipe : " << this->teamName << std::endl;
-    std::cout << "Pays equipe: " << this->teamPays << std::endl;
+    std::cout << "Nom equipe : " << this->e.getNomEquipe() << std::endl;
+    std::cout << "Pays equipe: " << this->e.getPaysEquipe() << std::endl;
 }
 
 

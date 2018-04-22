@@ -6,9 +6,17 @@
 using namespace std;
 
 class Equipe {
+public:
     Equipe () {}
     Equipe (string,string);
-}
+    string getNomEquipe();
+    string getPaysEquipe();
+    
+    
+private:
+    string teamName;
+    string teamPays;
+};
 
 
 
