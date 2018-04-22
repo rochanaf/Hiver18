@@ -2,7 +2,7 @@
 #define Joueur_H
 
 #include <string>
-
+#include "Equipe.h"
 using namespace std;
         
 // Cette classe represente un Joueur

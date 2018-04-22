@@ -8,7 +8,7 @@ using namespace std;
 class Equipe {
     Equipe () {}
     Equipe (string,string);
-}
+};
 
 
 
