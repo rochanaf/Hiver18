@@ -13,7 +13,8 @@ public:
     Equipe(string, string);
     
     // Setters
-    
+    string setNomEquipe(string);
+    string setPaysEquipe(string);    
     // Getters
     string getNomEquipe();
     string getPaysEquipe();

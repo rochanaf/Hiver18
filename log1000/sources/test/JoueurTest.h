@@ -14,7 +14,7 @@
 #include <netinet/in.h>
 
 #include "../Joueur.h"
-
+#include "../Equipe.cpp"
 using namespace CppUnit;
 using namespace std;
 

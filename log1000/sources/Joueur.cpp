@@ -1,18 +1,15 @@
 #include "Joueur.h"
-
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
 
 // Constructeur
-Joueur::Joueur (string nom,string prenom,int age,string teamName,string teamPays) {
+Joueur::Joueur (string nom,string prenom,int age,string teamName,string teamPays):equipe(Equipe(teamName,teamPays)) {
     // Joueur information
     this->nom = nom;
     this->prenom = prenom;
     this->age = age;
     // Equipe information
-    this->teamName = teamName;
-    this->teamPays = teamPays;
 }
 
 // Setters
@@ -26,9 +23,9 @@ void Joueur::setAge(int age) {
     this->age = age;
 }
 // Associer équipe au joueur
-void Joueur::associerEquipe (string teamName,string teamPays) {
-    this->teamName = teamName;
-    this->teamPays = teamPays;
+void Joueur::associerEquipe (string teamName, string teamPays) {
+    this->equipe.setNomEquipe(teamName) ;
+   this->equipe.setPaysEquipe(teamPays)  ;
 }
 
 // Getters
@@ -44,11 +41,11 @@ int Joueur::getAge() {
 }
 
 string Joueur::getNomEquipe() {
-    return equipe.teamName;
+    return this->equipe.getNomEquipe();
 }
 
 string Joueur::getPaysEquipe() {
-    return equipe.teamPays;
+    return this->equipe.getPaysEquipe();
 }
 
 // Enregistrer l'Joueur dans un fichier
@@ -58,8 +55,8 @@ void Joueur::saveJoueur (string fileName) {
     outfile<<this->nom <<","
 		   <<this->prenom <<","
 		   <<this->age <<","
-		   <<equipe.teamName << ","
-		   <<equipe.teamPays <<"\n";
+		   <<this->equipe.getNomEquipe() << ","
+		   <<this->equipe.getPaysEquipe() <<"\n";
     outfile.close();
 }
 
@@ -144,8 +141,8 @@ void Joueur::afficher() {
     std::cout << "Nom : " << this->nom << std::endl;
     std::cout << "Prenom : " << this->prenom << std::endl;
     std::cout << "Age : " << this->age << std::endl;
-    std::cout << "Nom equipe : " << equipe.teamName << std::endl;
-    std::cout << "Pays equipe: " << equipe.teamPays << std::endl;
+    std::cout << "Nom equipe : " << this->equipe.getNomEquipe() << std::endl;
+    std::cout << "Pays equipe: " << this->equipe.getPaysEquipe() << std::endl;
 }
 
 

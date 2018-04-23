@@ -2,7 +2,7 @@
 #define Joueur_H
 
 #include <string>
-
+#include "Equipe.h"
 using namespace std;
         
 // Cette classe represente un Joueur
@@ -10,7 +10,7 @@ class Joueur {
 public:
     // Constructeurs
     Joueur () {}
-    Joueur(string, string, int, string, string);
+    Joueur(string,string,int,string,string);
     
     // Setters
     void setNom(string);
@@ -25,7 +25,7 @@ public:
     string getPaysEquipe();
    
     // Associer une equipe à un joeur 
-    void associerEquipe(string, string);
+    void associerEquipe(string,string);
     // Enregistrer le Joueur
     void saveJoueur(string);
     // Afficher le Joueur

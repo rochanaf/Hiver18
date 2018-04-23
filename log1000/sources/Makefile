@@ -1,6 +1,6 @@
 
-article: Joueur.o main.o
-	g++ -o FIFA main.o Joueur.o 
+article: Equipe.o Joueur.o main.o
+	g++ -o FIFA main.o Joueur.o Equipe.o 
 
 Joueur.o: Joueur.cpp Joueur.h
 	g++ -o Joueur.o -c Joueur.cpp
@@ -14,3 +14,4 @@ main.o: main.cpp Joueur.h
 clean: 
 	rm *.o
 	rm Joueur
+	rm Equipe
