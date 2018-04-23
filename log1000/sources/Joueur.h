@@ -39,8 +39,7 @@ private:
     string prenom;
     int age;
     // Informations sur l'équipe
-    string teamName;
-    string teamPays;
+    Equipe equipe;
     
 };
 

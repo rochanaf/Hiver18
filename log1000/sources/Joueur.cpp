@@ -44,11 +44,11 @@ int Joueur::getAge() {
 }
 
 string Joueur::getNomEquipe() {
-    return this->teamName;
+    return equipe.teamName;
 }
 
 string Joueur::getPaysEquipe() {
-    return this->teamPays;
+    return equipe.teamPays;
 }
 
 // Enregistrer l'Joueur dans un fichier
@@ -58,8 +58,8 @@ void Joueur::saveJoueur (string fileName) {
     outfile<<this->nom <<","
 		   <<this->prenom <<","
 		   <<this->age <<","
-		   <<this->teamName << ","
-		   <<this->teamPays <<"\n";
+		   <<equipe.teamName << ","
+		   <<equipe.teamPays <<"\n";
     outfile.close();
 }
 
@@ -144,8 +144,8 @@ void Joueur::afficher() {
     std::cout << "Nom : " << this->nom << std::endl;
     std::cout << "Prenom : " << this->prenom << std::endl;
     std::cout << "Age : " << this->age << std::endl;
-    std::cout << "Nom equipe : " << this->teamName << std::endl;
-    std::cout << "Pays equipe: " << this->teamPays << std::endl;
+    std::cout << "Nom equipe : " << equipe.teamName << std::endl;
+    std::cout << "Pays equipe: " << equipe.teamPays << std::endl;
 }
 
 
