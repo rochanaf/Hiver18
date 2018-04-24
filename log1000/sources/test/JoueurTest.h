@@ -76,7 +76,7 @@ void JoueurTest::trouverJoueur(void)
 void JoueurTest::trouverJoueur2(void)
 {
     Joueur * a = jr->trouverJoueur ("../DB.txt", "nomTest","prenomTest");
-    if (a != NULL) {
+    if (a!= NULL) {
         CPPUNIT_ASSERT(true);
     } else {
         CPPUNIT_ASSERT(false);
