@@ -59,16 +59,15 @@ void Joueur::saveJoueur (string fileName) {
 		   <<this->equipe.getPaysEquipe() <<"\n";
     outfile.close();
 }
-
-string Joueur::recupereInformation(string information,string ligne)
+void recupereInformation(string information,string ligne,int j)
 {
-    int i = 0;
-    for (i = 0 ; i < ligne.length() ; i++) {
-        if (line[i] != ',') {
+    for (int i = j ; i < ligne.length() ; i++) {
+        if (ligne[i] != ',') {
             information += ligne[i];
         } else {
             break;
         }
+}
 }
 // Trouver un Joueur avec son nom dans la base de données DB
 Joueur* Joueur::trouverJoueur (string DB, string nom,string prenom) {
@@ -83,30 +82,30 @@ Joueur* Joueur::trouverJoueur (string DB, string nom,string prenom) {
         while (getline(fichier, line)) {
             string nomJoueurDB;
             // Récupérer le nom de joueur
-            recupereInformation(nomJoueurDB,line);
-            }
+            recupereInformation(nomJoueurDB,line,0);
+            
             // Si le Joueur qu'on lit actuellement est celui qu'on cherche
             if (nomJoueurDB == nom) {
                 
                 // Récupérer le prenom du joueur
                 string prenomJoueurDB;
-               recupereInformation(prenomJoueurDB,line);
-                }
+               recupereInformation(prenomJoueurDB,line,nomJoueurDB.size()+2);
+                
                 if (prenomJoueurDB == prenom) {
 				 
 			//  Récupérer le nom de l'age
 			string ageJoueurDB;
-			recupereInformation(ageJoueurDB,line);
-				}
-			}
+			recupereInformation(ageJoueurDB,line,prenomJoueurDB.size()+2);
+				
+			
 			// Récupérer le nom de l'équipe
 			string teamNameDB;
-			recupereInformation(teamNameDB,line);
-			}
+			recupereInformation(teamNameDB,line,ageJoueurDB.size()+2);
+		
 			// Récupérer le pays de l'équipe
 			string teamPaysDB;
-			recupereInformation(teamPaysDB,line);
-			}
+			recupereInformation(teamPaysDB,line,teamNameDB.size()+2);
+			
 			// Créer un objet de type Joueur avec les informations récupérées
 			Joueur *a = new Joueur(nomJoueurDB, prenomJoueurDB,atoi(ageJoueurDB.c_str()), teamNameDB, teamPaysDB);
 			// Fermer la base de données
