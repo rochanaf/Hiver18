@@ -31,6 +31,7 @@ public:
     // Afficher le Joueur
     void afficher();
     // Chercher un Joueur dans une base de donnees par titre
+    string recupereInformation(string information,string ligne)
     Joueur* trouverJoueur(string, string,string);
     
 private:

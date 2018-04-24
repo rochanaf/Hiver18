@@ -60,6 +60,16 @@ void Joueur::saveJoueur (string fileName) {
     outfile.close();
 }
 
+string Joueur::recupereInformation(string information,string ligne)
+{
+    int i = 0;
+    for (i = 0 ; i < ligne.length() ; i++) {
+        if (line[i] != ',') {
+            information += ligne[i];
+        } else {
+            break;
+        }
+}
 // Trouver un Joueur avec son nom dans la base de données DB
 Joueur* Joueur::trouverJoueur (string DB, string nom,string prenom) {
     
@@ -73,54 +83,29 @@ Joueur* Joueur::trouverJoueur (string DB, string nom,string prenom) {
         while (getline(fichier, line)) {
             string nomJoueurDB;
             // Récupérer le nom de joueur
-            int i = 0;
-            for (i = 0 ; i < line.length() ; i++) {
-                if (line[i] != ',') {
-                    nomJoueurDB += line[i];
-                } else {
-                    break;
-                }
+            recupereInformation(nomJoueurDB,line);
             }
             // Si le Joueur qu'on lit actuellement est celui qu'on cherche
             if (nomJoueurDB == nom) {
                 
                 // Récupérer le prenom du joueur
                 string prenomJoueurDB;
-                for (i = i + 1; i < line.length() ; i++) {
-                    if (line[i] != ',') {
-                        prenomJoueurDB += line[i];
-                    } else {
-                        break;
-                    }
+               recupereInformation(prenomJoueurDB,line);
                 }
                 if (prenomJoueurDB == prenom) {
 				 
 			//  Récupérer le nom de l'age
 			string ageJoueurDB;
-			for (i = i + 1; i < line.length() ; i++) {
-				if (line[i] != ',') {
-					ageJoueurDB += line[i];
-				} else {
-					break;
+			recupereInformation(ageJoueurDB,line);
 				}
 			}
 			// Récupérer le nom de l'équipe
 			string teamNameDB;
-			for (i = i + 1; i < line.length() ; i++) {
-				if (line[i] != ',') {
-					teamNameDB += line[i];
-				} else {
-					break;
-				}
+			recupereInformation(teamNameDB,line);
 			}
 			// Récupérer le pays de l'équipe
 			string teamPaysDB;
-			for (i = i + 1; i < line.length() ; i++) {
-				if (line[i] != ',') {
-					teamPaysDB += line[i];
-				} else {
-					break;
-				}
+			recupereInformation(teamPaysDB,line);
 			}
 			// Créer un objet de type Joueur avec les informations récupérées
 			Joueur *a = new Joueur(nomJoueurDB, prenomJoueurDB,atoi(ageJoueurDB.c_str()), teamNameDB, teamPaysDB);
